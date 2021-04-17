@@ -1,24 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
 
+// COMPONENTS
+import AlertMsg from './components/AlertMsg';
+import Header from './components/Header';
+import Footer from './components/Footer';
+
+// PAGES
+import Home from './pages/Home';
+import NotFoundPage from './pages/NotFoundPage';
+
+// LIBRARY
+// import { useState } from 'react';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 function App() {
+  // const [source, setSource] = useState('');
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header />
+      <AlertMsg />
+      <Switch>
+        <Route exact path="/" component={() => <Home />} />
+        <Route component={NotFoundPage} />
+      </Switch>
+      <Footer />
+    </Router>
   );
 }
 
