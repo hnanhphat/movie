@@ -1,18 +1,22 @@
 .movie-card {
-  width: calc(100% / 3);
   position: relative;
   &__poster {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    width: 220px;
-    height: 120px;
+    width: calc(100% - 10px);
+    height: calc(((100vw -8% - 60px) / 5) * 281 / 500);
+    margin: 0 auto;
   }
   &__info {
     position: absolute;
-    width: 100%;
+    width: calc(100% - 10px);
     height: 100%;
     top: 0;
-    left: 0;
+    left: 50%;
+    @include tranform_c(translateX(-50%));
+  }
+
+  &:hover {
   }
 }

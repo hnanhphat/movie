@@ -1,4 +1,5 @@
 import { React, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import api from '../apiService';
 import MovieCard from './MovieCard';
 import Slider from "react-slick";
@@ -10,6 +11,10 @@ const Trending = () => {
   const [movies, setMovies] = useState(null);
 
   const settings = {
+    className: "center",
+    centerMode: true,
+    infinite: true,
+    centerPadding: "4%",
     slidesToShow: 5,
     slidesToScroll: 1
   }
@@ -25,7 +30,7 @@ const Trending = () => {
 
   return (
     <div id="trending" className="movies movies--trending">
-      <h1 className="movies__title">Trending</h1>
+      <Link to="" className="movies__title">Trending<span>Explore All</span></Link>
       <Slider {...settings}>
         {movies && movies.results.map(movie => <MovieCard key={movie.id} movie={movie} />)}
       </Slider>

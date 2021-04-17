@@ -71,18 +71,29 @@ main {
   display: flex;
   align-items: center;
   height: 100vh;
-  padding-left: 4%; }
+  padding-left: 4%;
+  position: relative; }
+  .first-view::before {
+    content: '';
+    position: absolute;
+    background: linear-gradient(to bottom, transparent, #141414);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0; }
   .first-view__container {
     color: #fff;
-    width: 100%; }
+    width: 100%;
+    position: relative; }
     .first-view__container .title {
-      font-size: 52px;
-      text-shadow: 2px 2px 0 rgba(20, 20, 20, 0.2); }
+      font-size: 58px;
+      text-shadow: 2px 2px 4px rgba(20, 20, 20, 0.45); }
     .first-view__container .overview {
       width: 100%;
-      max-width: 520px;
+      max-width: 600px;
+      font-size: 20px;
       padding: 30px 0;
-      text-shadow: 1px 1px 0 rgba(20, 20, 20, 0.2); }
+      text-shadow: 1px 1px 2px rgba(20, 20, 20, 0.45); }
     .first-view__container .group {
       display: flex;
       justify-content: space-between; }
@@ -116,27 +127,146 @@ main {
         align-items: center;
         width: 82px;
         height: 34px;
+        font-size: 18px;
         padding-left: 8px;
-        text-shadow: 1px 1px 0 rgba(20, 20, 20, 0.2); }
+        text-shadow: 1px 1px 2px rgba(20, 20, 20, 0.45); }
 
 .movie-card {
-  width: calc(100% / 3);
   position: relative; }
   .movie-card__poster {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    width: 220px;
-    height: 120px; }
+    width: calc(100% - 10px);
+    height: calc(((100vw -8% - 60px) / 5) * 281 / 500);
+    margin: 0 auto; }
   .movie-card__info {
     position: absolute;
-    width: 100%;
+    width: calc(100% - 10px);
     height: 100%;
     top: 0;
-    left: 0; }
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%); }
 
-.movies__title {
-  font-weight: bold; }
+.movies {
+  color: #fff; }
+  .movies:not(:first-of-type) {
+    margin-top: 40px; }
+  .movies__title {
+    font-size: 22px;
+    font-weight: bold;
+    padding-left: 4%;
+    position: relative; }
+    .movies__title::before {
+      content: '';
+      position: absolute;
+      border-top: 3px solid #fff;
+      border-right: 3px solid #fff;
+      width: 8px;
+      height: 8px;
+      top: 60%;
+      right: -15px;
+      -webkit-transform: translateY(-50%) rotate(45deg);
+      -moz-transform: translateY(-50%) rotate(45deg);
+      -ms-transform: translateY(-50%) rotate(45deg);
+      -o-transform: translateY(-50%) rotate(45deg);
+      transform: translateY(-50%) rotate(45deg);
+      -webkit-transition: all 0.5s ease-out;
+      -moz-transition: all 0.5s ease-out;
+      -ms-transition: all 0.5s ease-out;
+      -o-transition: all 0.5s ease-out;
+      transition: all 0.5s ease-out; }
+    .movies__title span {
+      position: absolute;
+      width: 75px;
+      font-size: 12px;
+      padding-left: 10px;
+      top: 60%;
+      left: 100%;
+      opacity: 0;
+      -webkit-transform: translate(-10px, -50%);
+      -moz-transform: translate(-10px, -50%);
+      -ms-transform: translate(-10px, -50%);
+      -o-transform: translate(-10px, -50%);
+      transform: translate(-10px, -50%);
+      -webkit-transition: all 0.5s ease-out;
+      -moz-transition: all 0.5s ease-out;
+      -ms-transition: all 0.5s ease-out;
+      -o-transition: all 0.5s ease-out;
+      transition: all 0.5s ease-out; }
+    .movies__title:hover {
+      opacity: 1; }
+      .movies__title:hover::before {
+        border-width: 2px;
+        right: -84px;
+        width: 6px;
+        height: 6px; }
+      .movies__title:hover span {
+        opacity: 1;
+        -webkit-transform: translate(0, -50%);
+        -moz-transform: translate(0, -50%);
+        -ms-transform: translate(0, -50%);
+        -o-transform: translate(0, -50%);
+        transform: translate(0, -50%); }
+  .movies .slick-slider {
+    margin-top: 12px; }
+    .movies .slick-slider .slick-arrow {
+      position: absolute;
+      background: rgba(20, 20, 20, 0.5);
+      width: calc(4% - 5px);
+      height: 100%;
+      top: 0;
+      font-size: 0;
+      opacity: 0;
+      z-index: 20;
+      -webkit-transition: all 0.5s ease-out;
+      -moz-transition: all 0.5s ease-out;
+      -ms-transition: all 0.5s ease-out;
+      -o-transition: all 0.5s ease-out;
+      transition: all 0.5s ease-out; }
+      .movies .slick-slider .slick-arrow::before {
+        content: '';
+        position: absolute;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        border-top: 2px solid #fff;
+        border-right: 2px solid #fff;
+        width: 14px;
+        height: 14px;
+        top: 50%;
+        -webkit-transition: all 0.3s ease-out;
+        -moz-transition: all 0.3s ease-out;
+        -ms-transition: all 0.3s ease-out;
+        -o-transition: all 0.3s ease-out;
+        transition: all 0.3s ease-out; }
+      .movies .slick-slider .slick-arrow.slick-prev {
+        left: 0; }
+        .movies .slick-slider .slick-arrow.slick-prev::before {
+          left: calc(50% + 4px);
+          -webkit-transform: translate(-50%, -50%) rotate(-135deg);
+          -moz-transform: translate(-50%, -50%) rotate(-135deg);
+          -ms-transform: translate(-50%, -50%) rotate(-135deg);
+          -o-transform: translate(-50%, -50%) rotate(-135deg);
+          transform: translate(-50%, -50%) rotate(-135deg); }
+      .movies .slick-slider .slick-arrow.slick-next {
+        right: 0; }
+        .movies .slick-slider .slick-arrow.slick-next::before {
+          right: calc(50% + 4px);
+          -webkit-transform: translate(50%, -50%) rotate(45deg);
+          -moz-transform: translate(50%, -50%) rotate(45deg);
+          -ms-transform: translate(50%, -50%) rotate(45deg);
+          -o-transform: translate(50%, -50%) rotate(45deg);
+          transform: translate(50%, -50%) rotate(45deg); }
+      .movies .slick-slider .slick-arrow:hover::before {
+        border-width: 4px;
+        width: 18px;
+        height: 18px; }
+    .movies .slick-slider:hover .slick-arrow {
+      opacity: 1; }
 
 .footer {
   background: #141414;
@@ -236,3 +366,6 @@ main {
               border-top: 5px solid #fff;
               border-left: 5px solid transparent;
               border-right: 5px solid transparent; }
+
+#main {
+  background: #141414; }
