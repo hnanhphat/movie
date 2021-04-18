@@ -1,5 +1,4 @@
 .header {
-  // background: $primary-black;
   color: $white;
   display: flex;
   align-items: center;
@@ -11,6 +10,10 @@
   top: 0;
   left: 0;
   z-index: 10;
+  @include transition_c(all .5s ease-out);
+  &--scroll {
+    background: $primary-black;
+  }
   &__left {
     display: flex;
     .logo {

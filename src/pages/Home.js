@@ -8,14 +8,21 @@ import TopRated from '../components/TopRated';
 // const NOW_PLAYING = 'movie/now_playing';
 // const GENRE = '/genre/movie/list';
 
-const Home = () => {
+const Home = ({ selectedMovie, setSelectedMovie, setShowPopup }) => {
+  const showDetail = (item) => {
+    setShowPopup(true);
+    if (selectedMovie?.id !== item.id) {
+      setSelectedMovie(item);
+    }
+  };
+
   return (
     <div id="main">
       <FirstView />
-      <CurrentPlaying />
-      <Popular />
-      <Trending />
-      <TopRated />
+      <CurrentPlaying showDetail={showDetail} />
+      <Popular showDetail={showDetail} />
+      <Trending showDetail={showDetail} />
+      <TopRated showDetail={showDetail} />
     </div>
   )
 }
