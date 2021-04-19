@@ -9,7 +9,7 @@
   padding: 0 4%;
   top: 0;
   left: 0;
-  z-index: 10;
+  z-index: 100;
   @include transition_c(all .5s ease-out);
   &--scroll {
     background: $primary-black;
@@ -31,9 +31,24 @@
         }
         a {
           font-size: 12px;
+          position: relative;
+          @include transition_c(all .5s ease-out);
+          &::before {
+            content: '';
+            position: absolute;
+            background: $white;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 50%;
+            @include tranform_c(translateX(-50%));
+            @include transition_c(all .5s ease-out);
+          }
           &.current {
             font-weight: bold;
-            pointer-events: none;
+            &::before {
+              width: 100%;
+            }
           }
         }
       }
@@ -79,7 +94,140 @@
             }
           }
         }
+        form {
+          display: flex;
+          align-items: center;
+          height: 100%;
+          position: relative;
+          input {
+            background: $primary-black;
+            border: 2px solid $white;
+            color: $white;
+            width: 0;
+            height: 34px;
+            padding: 10px;
+            opacity: 0;
+            @include transition_c(all .5s ease-out);
+            &::placeholder {
+              color: rgba($color: $white, $alpha: 0.5);
+            }
+
+            &:focus {
+              width: 258px;
+              opacity: 1;
+              padding-left: 32px;
+            }
+          }
+          button {
+            color: $white;
+            position: absolute;
+            top: calc(50% + 2px);
+            left: 6px;
+            @include tranform_c(translateY(-50%));
+            svg {
+              width: 17px;
+            }
+          }
+
+          &:hover {
+            input {
+              width: 258px;
+              opacity: 1;
+              padding-left: 32px;
+            }
+          }
+        }
+      }
+      .dropdown {
+        position: relative;
+        &::before {
+          content: '';
+          position: absolute;
+          border-bottom: 5px solid $white;
+          border-left: 5px solid transparent;
+          border-right: 5px solid transparent;
+          bottom: 8px;
+          left: 50%;
+          opacity: 0;
+          @include tranform_c(translate(-50%, 5px));
+          @include transition_c(all .5s ease-out);
+        }
+        &__list {
+          background: $primary-black;
+          border-top: 3px solid $white;
+          position: absolute;
+          width: 420px;
+          height: 520px;
+          top: 100%;
+          right: 0;
+          overflow: auto;
+          padding-bottom: 20px;
+          transform-origin: right top;
+          @include tranform_c(scale(0));
+          @include transition_c(all .3s ease-out);
+        }
+        &__item {
+          display: flex;
+          align-items: center;
+          padding: 12px;
+          .img {
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            width: 40%;
+            height: 90px;
+          }
+          .info {
+            width: 60%;
+            padding-left: 15px;
+          }
+        }
+        &__btn {
+          background: $primary-red;
+          border-radius: 5px;
+          color: $white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 180px;
+          height: 40px;
+          font-size: 16px;
+          font-weight: bold;
+          margin: 20px auto 0;
+          @include transition_c(all .5s ease-out);
+          svg {
+            width: 16px;
+            margin-right: 15px;
+          }
+          &:hover {
+            svg {
+              animation: spin 2s infinite; 
+            }
+          }
+        }
+
+        &:hover {
+          &::before {
+            opacity: 1;
+            @include tranform_c(translate(-50%, 0));
+          }
+          .dropdown__list {
+            @include tranform_c(scale(1));
+          }
+        }
       }
     }
+  }
+
+  @keyframes spin {
+    0% { 
+      @include tranform_c(rotate(0));
+     }
+    50% { 
+      @include tranform_c(rotate(180deg));
+     }
+    100% { 
+      @include tranform_c(rotate(360deg));
+     }
   }
 }

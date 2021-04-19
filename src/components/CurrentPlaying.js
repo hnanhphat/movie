@@ -7,14 +7,14 @@ import '../libraries/slick/slick.css';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
-const CurrentPlaying = ({ showDetail }) => {
+const CurrentPlaying = ({ setCurrentState, showDetail }) => {
   const [movies, setMovies] = useState(null);
 
   const settings = {
     className: "center",
     centerMode: true,
     infinite: true,
-    centerPadding: "4%",
+    centerPadding: "4vw",
     slidesToShow: 5,
     slidesToScroll: 1
   }
@@ -30,7 +30,7 @@ const CurrentPlaying = ({ showDetail }) => {
 
   return (
     <div id="movies-current-playing" className="movies movies--current-playing">
-      <Link to="/" className="movies__title">Now Playing<span>Explore All</span></Link>
+      <Link to="/movies" onClick={() => setCurrentState('Movies')} className="movies__title">Now Playing<span>Explore All</span></Link>
       <Slider {...settings}>
         {movies && movies.results.map(movie => <MovieCard key={movie.id} movie={movie} showDetail={showDetail} />)}
       </Slider>

@@ -7,7 +7,7 @@ import '../libraries/slick/slick.css';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
-const TopRated = ({ showDetail }) => {
+const TvShow = ({ setCurrentState, showDetail }) => {
   const [movies, setMovies] = useState(null);
 
   const settings = {
@@ -21,7 +21,7 @@ const TopRated = ({ showDetail }) => {
 
   useEffect(() => {
     const getMovies = async () => {
-      let url = `movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`;
+      let url = `tv/popular?api_key=${API_KEY}&language=en-US&page=1`;
       const res = await api.get(url);
       setMovies(res.data);
     }
@@ -29,8 +29,8 @@ const TopRated = ({ showDetail }) => {
   }, []);
 
   return (
-    <div id="top-rated" className="movies movies--top-rated">
-      <Link to="/toprated" className="movies__title">Top Rated<span>Explore All</span></Link>
+    <div id="movies-tv-show" className="movies movies--tv-show">
+      <Link to="/tvshows" onClick={() => setCurrentState('TV Shows')} className="movies__title">TV Shows<span>Explore All</span></Link>
       <Slider {...settings}>
         {movies && movies.results.map(movie => <MovieCard key={movie.id} movie={movie} showDetail={showDetail} />)}
       </Slider>
@@ -38,4 +38,4 @@ const TopRated = ({ showDetail }) => {
   )
 }
 
-export default TopRated
+export default TvShow

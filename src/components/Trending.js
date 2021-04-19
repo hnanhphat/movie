@@ -14,7 +14,7 @@ const Trending = ({ showDetail }) => {
     className: "center",
     centerMode: true,
     infinite: true,
-    centerPadding: "4%",
+    centerPadding: "4vw",
     slidesToShow: 5,
     slidesToScroll: 1
   }
@@ -30,7 +30,7 @@ const Trending = ({ showDetail }) => {
 
   return (
     <div id="trending" className="movies movies--trending">
-      <Link to="" className="movies__title">Trending<span>Explore All</span></Link>
+      <Link to="/trending" className="movies__title">Trending<span>Explore All</span></Link>
       <Slider {...settings}>
         {movies && movies.results.map(movie => <MovieCard key={movie.id} movie={movie} showDetail={showDetail} />)}
       </Slider>
