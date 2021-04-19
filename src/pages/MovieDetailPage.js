@@ -12,7 +12,7 @@ const MovieDetailPage = () => {
   const { id } = useParams();
   const [movies, setMovies] = useState(null);
   const [showDetail, setShowDetail] = useState(false);
-
+  
   const addToFavorites = async (e) => {
     try {
       const fav = await apiJson.get('/favorites');

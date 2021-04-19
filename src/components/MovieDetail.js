@@ -9,7 +9,7 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 
 const MovieDetail = ({ selectedMovie, showPopup, setShowPopup }) => {
   const [trailer, setTrailer] = useState(null);
-
+  
   const addToFavorites = async (e) => {
     try {
       const fav = await apiJson.get('/favorites');

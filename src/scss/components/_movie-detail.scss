@@ -15,7 +15,7 @@
   top: 0;
   left: 0;
   z-index: 2000;
-  @include transition_c(all .5s ease-out);
+  @include transition_c(all 0.5s ease-out);
   .modal-dialog {
     background: $primary-black;
     border-radius: 10px;
@@ -27,7 +27,7 @@
     overflow: auto;
     opacity: 0;
     @include tranform_c(translateY(-60%));
-    @include transition_c(all .5s ease-out);
+    @include transition_c(all 0.5s ease-out);
     .modal-header {
       display: flex;
       align-items: center;
@@ -88,7 +88,7 @@
         height: 40px;
         font-size: 16px;
         font-weight: bold;
-        @include transition_c(all .5s ease-out);
+        @include transition_c(all 0.5s ease-out);
         svg {
           width: 15px;
           margin-right: 10px;
