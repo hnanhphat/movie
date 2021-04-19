@@ -287,17 +287,64 @@ main {
     -ms-transition: all 0.5s ease-out;
     -o-transition: all 0.5s ease-out;
     transition: all 0.5s ease-out; }
-    .modal .modal-dialog .video {
+    .modal .modal-dialog .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px; }
+      .modal .modal-dialog .modal-header .modal-title {
+        color: #fff;
+        font-size: 20px;
+        font-weight: bold; }
+      .modal .modal-dialog .modal-header button {
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+        height: 20px;
+        position: relative; }
+        .modal .modal-dialog .modal-header button span {
+          font-size: 32px; }
+          .modal .modal-dialog .modal-header button span.sr-only {
+            font-size: 0; }
+        .modal .modal-dialog .modal-header button:hover {
+          opacity: 0.5; }
+    .modal .modal-dialog .modal-body .video {
       font-size: 0; }
-      .modal .modal-dialog .video iframe {
+      .modal .modal-dialog .modal-body .video iframe {
         width: 100%;
         height: 450px; }
-    .modal .modal-dialog .img {
+    .modal .modal-dialog .modal-body .img {
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
       width: 100%;
       height: 450px; }
+    .modal .modal-dialog .modal-footer {
+      padding: 20px; }
+      .modal .modal-dialog .modal-footer button {
+        background: #d33027;
+        border-radius: 5px;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 186px;
+        height: 40px;
+        font-size: 16px;
+        font-weight: bold;
+        -webkit-transition: all 0.5s ease-out;
+        -moz-transition: all 0.5s ease-out;
+        -ms-transition: all 0.5s ease-out;
+        -o-transition: all 0.5s ease-out;
+        transition: all 0.5s ease-out; }
+        .modal .modal-dialog .modal-footer button svg {
+          width: 15px;
+          margin-right: 10px; }
+        .modal .modal-dialog .modal-footer button:hover {
+          opacity: 0.5; }
   .modal.show .modal-dialog {
     opacity: 1;
     -webkit-transform: translateY(-50%);
