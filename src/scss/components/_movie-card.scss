@@ -1,0 +1,47 @@
+.movie-card {
+  padding: 0 5px;
+  &__box {
+    display: block;
+    width: 100%;
+    position: relative;
+    &:hover {
+      opacity: 1;
+      .movie-card__info {
+        opacity: 1;
+        .title {
+          @include tranform_c(translateY(0));
+        }
+      }
+    }
+  }
+  &__poster {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: calc(((100vw - 8vw - 60px) / 5) * 281 / 500);
+    margin: 0 auto;
+  }
+  &__info {
+    position: absolute;
+    background: rgba($color: $primary-black, $alpha: 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    opacity: 0;
+    @include tranform_c(translateX(-50%));
+    @include transition_c(all .5s ease-out);
+    .title {
+      color: $white;
+      font-size: 1.3vw;
+      padding: 0 10px;
+      @include tranform_c(translateY(10px));
+      @include transition_c(all .5s ease-out);
+    }
+  }
+}

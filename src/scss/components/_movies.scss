@@ -1,0 +1,104 @@
+.movies {
+  color: $white;
+  // padding: 0 4%;
+  &:not(:first-of-type) {
+    margin-top: 80px;
+  }
+  &__title {
+    font-size: 22px;
+    font-weight: bold;
+    padding-left: 4vw;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      border-top: 3px solid $white;
+      border-right: 3px solid $white;
+      width: 8px;
+      height: 8px;
+      top: 60%;
+      right: -15px;
+      @include tranform_c(translateY(-50%) rotate(45deg));
+      @include transition_c(all .5s ease-out);
+    }
+    span {
+      position: absolute;
+      width: 75px;
+      font-size: 12px;
+      padding-left: 10px;
+      top: 60%;
+      left: 100%;
+      opacity: 0;
+      @include tranform_c(translate(-10px, -50%));
+      @include transition_c(all .5s ease-out);
+    }
+
+    &:hover {
+      opacity: 1;
+      &::before {
+        border-width: 2px;
+        right: -84px;
+        width: 6px;
+        height: 6px;
+      }
+      span {
+        opacity: 1;
+        @include tranform_c(translate(0, -50%));
+      }
+    }
+  }
+  .slick-slider {
+    margin-top: 12px;
+    .slick-arrow {
+      position: absolute;
+      background: rgba($color: $primary-black, $alpha: 0.5);
+      width: calc(4% - 5px);
+      height: 100%;
+      top: 0;
+      font-size: 0;
+      opacity: 0;
+      z-index: 20;
+      @include transition_c(all .5s ease-out);
+      &::before {
+        content: '';
+        position: absolute;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        border-top: 2px solid $white;
+        border-right: 2px solid $white;
+        width: 14px;
+        height: 14px;
+        top: 50%;
+        @include transition_c(all .3s ease-out);
+      }
+      &.slick-prev {
+        left: 0;
+        &::before {
+          left: calc(50% + 4px);
+          @include tranform_c(translate(-50%, -50%) rotate(-135deg));
+        }
+      }
+      &.slick-next {
+        right: 0;
+        &::before {
+          right: calc(50% + 4px);
+          @include tranform_c(translate(50%, -50%) rotate(45deg));
+        }
+      }
+
+      &:hover {
+        &::before {
+          border-width: 4px;
+          width: 18px;
+          height: 18px;
+        }
+      }
+    }
+
+    &:hover {
+      .slick-arrow {
+        opacity: 1;
+      }
+    }
+  }
+}

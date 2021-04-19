@@ -1,0 +1,25 @@
+// ABSTRACTS
+@import './abstracts/mixin';
+@import './abstracts/variables';
+
+// BASE
+@import './base/base';
+@import './base/loading';
+
+// COMPONENTS
+@import './components/button';
+@import './components/first-view';
+@import './components/movie-card';
+@import './components/movie-detail';
+@import './components/movies';
+@import './components/pagination';
+
+// LAYOUT
+@import './layout/footer';
+@import './layout/header';
+
+// // PAGES
+@import './pages/404';
+@import './pages/archive';
+@import './pages/detail';
+@import './pages/home';
