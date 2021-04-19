@@ -16,9 +16,8 @@ const TvDetailPage = () => {
   const addToFavorites = async (e) => {
     try {
       const fav = await apiJson.get('/favorites');
-      const existed = fav.data ? fav.data.find(movie => movie.id === e) : false;
-      console.log(existed);
-      if(existed === undefined) {
+      const existed = fav.data ? fav.data.find(movie => movie.id === parseInt(e)) : false;
+      if(existed !== undefined) {
         toast.error(`This movie is existed`);
       } else {
         const res = await apiJson.post('/favorites', movies);

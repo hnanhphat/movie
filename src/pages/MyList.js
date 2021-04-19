@@ -31,7 +31,6 @@ const MyList = () => {
   const deleteToFavorites = async (id) => {
     try {
       const deleteData = await apiJson.delete(`/favorites/${id}`);
-      console.log(deleteData);
       toast.error(`${deleteData} deleted`);
       getMovies();
     } catch (error) {

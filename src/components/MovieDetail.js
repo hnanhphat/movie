@@ -13,7 +13,6 @@ const MovieDetail = ({ selectedMovie, showPopup, setShowPopup }) => {
         let url = `${selectedMovie.adult === false ? 'movie' : 'tv'}/${selectedMovie.id}/videos?api_key=${API_KEY}&language=en-US`;
         const res = await api.get(url);
         setTrailer(res.data.results);
-        console.log(res.data.results === null)
       }
     }
     getTrailer();
