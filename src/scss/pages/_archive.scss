@@ -113,6 +113,7 @@
     li {
       width: 25%;
       padding: 0 10px 20px;
+      position: relative;
       a {
         display: block;
         position: relative;
@@ -131,6 +132,48 @@
           left: 0;
         }
       }
+      button {
+        position: absolute;
+        background: $primary-red;
+        border-radius: 5px;
+        color: $white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        top: 10px;
+        right: 20px;
+        opacity: 0;
+        z-index: 10;
+        svg {
+          width: 16px;
+        }
+
+        &:hover {
+          svg {
+            animation: zoom 1s infinite; 
+          }
+        }
+      }
+
+      &:hover {
+        button {
+          opacity: 1;
+        }
+      }
     }
+  }
+
+  @keyframes zoom {
+    0% { 
+      @include tranform_c(scale(1));
+     }
+    50% { 
+      @include tranform_c(scale(1.2));
+     }
+    100% { 
+      @include tranform_c(scale(1));
+     }
   }
 }

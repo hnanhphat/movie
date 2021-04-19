@@ -7,7 +7,7 @@ import '../libraries/slick/slick.css';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
-const TvShow = ({ setCurrentState, showDetail }) => {
+const TvShow = ({ setCurrentState }) => {
   const [movies, setMovies] = useState(null);
 
   const settings = {
@@ -32,7 +32,7 @@ const TvShow = ({ setCurrentState, showDetail }) => {
     <div id="movies-tv-show" className="movies movies--tv-show">
       <Link to="/tvshows" onClick={() => setCurrentState('TV Shows')} className="movies__title">TV Shows<span>Explore All</span></Link>
       <Slider {...settings}>
-        {movies && movies.results.map(movie => <MovieCard key={movie.id} movie={movie} showDetail={showDetail} />)}
+        {movies && movies.results.map(movie => <MovieCard key={movie.id} movie={movie} />)}
       </Slider>
     </div>
   )

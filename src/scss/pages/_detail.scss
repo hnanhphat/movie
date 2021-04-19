@@ -23,6 +23,7 @@
     background: rgba($color: $primary-black, $alpha: 0.5);
     border-radius: 10px;
     display: flex;
+    align-items: flex-start;
     justify-content: space-between;
     width: 100%;
     max-width: 880px;

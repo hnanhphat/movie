@@ -292,6 +292,12 @@ main {
       .modal .modal-dialog .video iframe {
         width: 100%;
         height: 450px; }
+    .modal .modal-dialog .img {
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      width: 100%;
+      height: 450px; }
   .modal.show .modal-dialog {
     opacity: 1;
     -webkit-transform: translateY(-50%);
@@ -907,7 +913,8 @@ main {
     position: relative; }
     .archive__list li {
       width: 25%;
-      padding: 0 10px 20px; }
+      padding: 0 10px 20px;
+      position: relative; }
       .archive__list li a {
         display: block;
         position: relative; }
@@ -923,6 +930,46 @@ main {
           height: 100%;
           top: 0;
           left: 0; }
+      .archive__list li button {
+        position: absolute;
+        background: #d33027;
+        border-radius: 5px;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        top: 10px;
+        right: 20px;
+        opacity: 0;
+        z-index: 10; }
+        .archive__list li button svg {
+          width: 16px; }
+        .archive__list li button:hover svg {
+          animation: zoom 1s infinite; }
+      .archive__list li:hover button {
+        opacity: 1; }
+
+@keyframes zoom {
+  0% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1); }
+  50% {
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2); }
+  100% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1); } }
 
 .movie-detail {
   display: flex;
@@ -952,6 +999,7 @@ main {
     background: rgba(20, 20, 20, 0.5);
     border-radius: 10px;
     display: flex;
+    align-items: flex-start;
     justify-content: space-between;
     width: 100%;
     max-width: 880px;

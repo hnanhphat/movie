@@ -14,6 +14,7 @@ const Header = ({ currentState, setCurrentState, setSearch, searchCurrentPage, s
   const [movies, setMovies] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
+  const [keyword, setKeyword] = useState('');
 
   const handlePage = (pageName) => {
     setCurrentState(pageName);
@@ -23,16 +24,13 @@ const Header = ({ currentState, setCurrentState, setSearch, searchCurrentPage, s
     setCurrentPage(state => state + 1);
   }
 
-  const handleSearch = async (e) => {
-    if(e && e.target.searchInput.value) {
-      e.preventDefault();
-      history.push(`/`);
-      setCurrentState('Home');
-      let url = `search/multi?api_key=${API_KEY}&language=en-US&query=${e.target.searchInput.value}&page=${searchCurrentPage}&include_adult=false`;
-      const res = await api.get(url);
-      setSearch(res.data);
-      setSearchTotalPage(res.data.total_pages);
-    }
+  const handleSearch = async () => {
+    history.push(`/`);
+    setCurrentState('Home');
+    let url = `search/multi?api_key=${API_KEY}&language=en-US&query=${keyword}&page=${searchCurrentPage}&include_adult=false`;
+    const res = await api.get(url);
+    setSearch(res.data);
+    setSearchTotalPage(res.data.total_pages);
   }
 
   useEffect(() => {
@@ -56,6 +54,11 @@ const Header = ({ currentState, setCurrentState, setSearch, searchCurrentPage, s
     getMovies();
   }, [currentPage])
 
+  useEffect(() => {
+    if(!keyword) return;
+    handleSearch();
+  }, [keyword, searchCurrentPage]);
+
   return (
     <header id="header" className={`header ${status ? 'header--scroll' : ''}`}>
       <div className="header__left">
@@ -67,13 +70,13 @@ const Header = ({ currentState, setCurrentState, setSearch, searchCurrentPage, s
           <li><Link to="/tvshows" onClick={() => handlePage('TV Shows')} className={currentState === 'TV Shows' ? 'current' : ''}>TV Shows</Link></li>
           <li><Link to="/movies" onClick={() => handlePage('Movies')} className={currentState === 'Movies' ? 'current' : ''}>Movies</Link></li>
           <li><Link to="/popular" onClick={() => handlePage('Popular')} className={currentState === 'Popular' ? 'current' : ''}>New &amp; Popular</Link></li>
-          <li><Link to="/" onClick={() => handlePage('My List')} className={currentState === 'My List' ? 'current' : ''}>My List</Link></li>
+          <li><Link to="/mylist" onClick={() => handlePage('My List')} className={currentState === 'My List' ? 'current' : ''}>My List</Link></li>
         </ul>
       </div>
       <div className="header__right">
         <ul className="personal">
           <li>
-            <form onSubmit={handleSearch}>
+            <form onSubmit={(e) => {e.preventDefault(); setKeyword(e.target.searchInput.value)}}>
               <input type="text" name="searchInput" placeholder="Titles, people, genres" />
               <button type="submit"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" className="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path></svg></button>
             </form>

@@ -40,7 +40,6 @@ const TopRatedPage = () => {
       setMovies(res.data);
       setTotalPage(res.data.total_pages);
       setLoading(true);
-      console.log(res.data)
     }
     getMovies();
   }, [currentPage, totalPage]);

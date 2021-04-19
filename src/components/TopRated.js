@@ -7,7 +7,7 @@ import '../libraries/slick/slick.css';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
-const TopRated = ({ showDetail }) => {
+const TopRated = () => {
   const [movies, setMovies] = useState(null);
 
   const settings = {
@@ -32,7 +32,7 @@ const TopRated = ({ showDetail }) => {
     <div id="top-rated" className="movies movies--top-rated">
       <Link to="/toprated" className="movies__title">Top Rated<span>Explore All</span></Link>
       <Slider {...settings}>
-        {movies && movies.results.map(movie => <MovieCard key={movie.id} movie={movie} showDetail={showDetail} />)}
+        {movies && movies.results.map(movie => <MovieCard key={movie.id} movie={movie} />)}
       </Slider>
     </div>
   )

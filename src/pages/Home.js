@@ -9,13 +9,7 @@ import TopRated from '../components/TopRated';
 import noImg from '../no-img.jpg';
 import PaginationBar from '../components/PaginationBar';
 
-const Home = ({ setCurrentState, selectedMovie, setSelectedMovie, setShowPopup, search, searchCurrentPage, setSearchCurrentPage, searchTotalPage }) => {
-  const showDetail = (item) => {
-    setShowPopup(true);
-    if (selectedMovie?.id !== item.id) {
-      setSelectedMovie(item);
-    }
-  };
+const Home = ({ setCurrentState, search, searchCurrentPage, setSearchCurrentPage, searchTotalPage }) => {
 
   return (
     <div id="main">
@@ -36,11 +30,11 @@ const Home = ({ setCurrentState, selectedMovie, setSelectedMovie, setShowPopup, 
       :
         <div id="home">
           <FirstView />
-          <CurrentPlaying setCurrentState={setCurrentState} showDetail={showDetail} />
-          <Popular setCurrentState={setCurrentState} showDetail={showDetail} />
-          <TvShow setCurrentState={setCurrentState} showDetail={showDetail} />
-          <Trending setCurrentState={setCurrentState} showDetail={showDetail} />
-          <TopRated setCurrentState={setCurrentState} showDetail={showDetail} />
+          <CurrentPlaying setCurrentState={setCurrentState} />
+          <Popular setCurrentState={setCurrentState} />
+          <TvShow setCurrentState={setCurrentState} />
+          <Trending setCurrentState={setCurrentState} />
+          <TopRated setCurrentState={setCurrentState} />
         </div>
       }
     </div>
