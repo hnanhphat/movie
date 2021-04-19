@@ -4,12 +4,14 @@
     display: block;
     width: 100%;
     position: relative;
-    &:hover {
-      opacity: 1;
-      .movie-card__info {
+    @include respond(hover) {
+      &:hover {
         opacity: 1;
-        .title {
-          @include tranform_c(translateY(0));
+        .movie-card__info {
+          opacity: 1;
+          .title {
+            @include tranform_c(translateY(0));
+          }
         }
       }
     }
@@ -21,6 +23,9 @@
     width: 100%;
     height: calc(((100vw - 8vw - 60px) / 5) * 281 / 500);
     margin: 0 auto;
+    @include respond(phone) {
+      height: calc(((100vw - 8vw - 10px) / 2) * 281 / 500);
+    }
   }
   &__info {
     position: absolute;

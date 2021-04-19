@@ -13,3 +13,32 @@
   -o-transition: $value;
   transition: $value;
 }
+
+// 1em = 16px
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 48em) {
+      @content;
+    }
+  }
+  @if $breakpoint == tab-port {
+    @media only screen and (max-width: 56.25em) {
+      @content;
+    }
+  }
+  @if $breakpoint == tab-land {
+    @media only screen and (max-width: 75em) {
+      @content;
+    }
+  }
+  @if $breakpoint == big-desktop {
+    @media only screen and (min-width: 112.5em) {
+      @content;
+    }
+  }
+  @if $breakpoint == hover {
+    @media only screen and (min-width: 48em) {
+      @content;
+    }
+  }
+}

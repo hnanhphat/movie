@@ -16,7 +16,13 @@ const Trending = () => {
     infinite: true,
     centerPadding: "4vw",
     slidesToShow: 5,
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    responsive: [{
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 2,
+      }
+    }]
   }
 
   useEffect(() => {

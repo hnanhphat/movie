@@ -3,6 +3,9 @@
   // padding: 0 4%;
   &:not(:first-of-type) {
     margin-top: 80px;
+    @include respond(phone) {
+      margin-top: 40px;
+    }
   }
   &__title {
     font-size: 22px;
@@ -20,6 +23,12 @@
       right: -15px;
       @include tranform_c(translateY(-50%) rotate(45deg));
       @include transition_c(all .5s ease-out);
+      @include respond(phone) {
+        border-width: 2px;
+        right: -84px;
+        width: 6px;
+        height: 6px;
+      }
     }
     span {
       position: absolute;
@@ -31,19 +40,25 @@
       opacity: 0;
       @include tranform_c(translate(-10px, -50%));
       @include transition_c(all .5s ease-out);
-    }
-
-    &:hover {
-      opacity: 1;
-      &::before {
-        border-width: 2px;
-        right: -84px;
-        width: 6px;
-        height: 6px;
-      }
-      span {
+      @include respond(phone) {
         opacity: 1;
         @include tranform_c(translate(0, -50%));
+      }
+    }
+
+    @include respond(hover) {
+      &:hover {
+        opacity: 1;
+        &::before {
+          border-width: 2px;
+          right: -84px;
+          width: 6px;
+          height: 6px;
+        }
+        span {
+          opacity: 1;
+          @include tranform_c(translate(0, -50%));
+        }
       }
     }
   }
@@ -52,13 +67,17 @@
     .slick-arrow {
       position: absolute;
       background: rgba($color: $primary-black, $alpha: 0.5);
-      width: calc(4% - 5px);
+      width: calc(4vw - 5px);
       height: 100%;
       top: 0;
       font-size: 0;
       opacity: 0;
       z-index: 20;
       @include transition_c(all .5s ease-out);
+      @include respond(phone) {
+        width: 8vw;
+        opacity: 1;
+      }
       &::before {
         content: '';
         position: absolute;
@@ -86,18 +105,22 @@
         }
       }
 
-      &:hover {
-        &::before {
-          border-width: 4px;
-          width: 18px;
-          height: 18px;
+      @include respond(hover) {
+        &:hover {
+          &::before {
+            border-width: 4px;
+            width: 18px;
+            height: 18px;
+          }
         }
       }
     }
 
-    &:hover {
-      .slick-arrow {
-        opacity: 1;
+    @include respond(hover) {
+      &:hover {
+        .slick-arrow {
+          opacity: 1;
+        }
       }
     }
   }

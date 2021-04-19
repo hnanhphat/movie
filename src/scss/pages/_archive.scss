@@ -19,6 +19,9 @@
         background-repeat: no-repeat;
         height: 100%;
         height: 90vh;
+        @include respond(phone) {
+          height: 50vh;
+        }
       }
     }
     .slick-dots {
@@ -96,9 +99,12 @@
           }
         }
       }
-      &:hover {
-        .filter__dropdown {
-          @include tranform_c(scale(1));
+
+      @include respond(hover) {
+        &:hover {
+          .filter__dropdown {
+            @include tranform_c(scale(1));
+          }
         }
       }
     }
@@ -114,6 +120,9 @@
       width: 25%;
       padding: 0 10px 20px;
       position: relative;
+      @include respond(phone) {
+        width: 50%;
+      }
       a {
         display: block;
         position: relative;
@@ -123,6 +132,9 @@
           background-repeat: no-repeat;
           width: 100%;
           height: calc(((100vw - 8vw - 40px) / 4) * 3 / 2);
+          @include respond(phone) {
+            height: calc(((100vw - 8vw - 20px) / 2) * 3 / 2);
+          }
         }
         .info {
           position: absolute;
@@ -150,16 +162,20 @@
           width: 16px;
         }
 
-        &:hover {
-          svg {
-            animation: zoom 1s infinite; 
+        @include respond(hover) {
+          &:hover {
+            svg {
+              animation: zoom 1s infinite; 
+            }
           }
         }
       }
 
-      &:hover {
-        button {
-          opacity: 1;
+      @include respond(hover) {
+        &:hover {
+          button {
+            opacity: 1;
+          }
         }
       }
     }

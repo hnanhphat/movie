@@ -37,18 +37,20 @@
         @include tranform_c(translate(-50%, -50%) scale(0));
         @include transition_c(all .5s ease-out);
       }
-      
+
       span {
         &.sr-only {
           font-size: 0;
         }
       }
 
-      &:hover {
-        color: $white;
-        opacity: 1;
-        &::before {
-          @include tranform_c(translate(-50%, -50%) scale(1));
+      @include respond(hover) {
+        &:hover {
+          color: $white;
+          opacity: 1;
+          &::before {
+            @include tranform_c(translate(-50%, -50%) scale(1));
+          }
         }
       }
     }
@@ -90,8 +92,10 @@
         left: calc(50% + 2px);
         @include tranform_c(translate(-50%, -50%) rotate(-135deg));
       }
-      &:hover::after {
-        border-color: $white;
+      @include respond(hover) {
+        &:hover::after {
+          border-color: $white;
+        }
       }
     }
 
@@ -100,8 +104,10 @@
         left: calc(50% - 2px);
         @include tranform_c(translate(-50%, -50%) rotate(45deg));
       }
-      &:hover::after {
-        border-color: $white;
+      @include respond(hover) {
+        &:hover::after {
+          border-color: $white;
+        }
       }
     }
   }

@@ -53,8 +53,10 @@
           }
         }
 
-        &:hover {
-          opacity: 0.5;
+        @include respond(hover) {
+          &:hover {
+            opacity: 0.5;
+          }
         }
       }
     }
@@ -94,8 +96,10 @@
           margin-right: 10px;
         }
 
-        &:hover {
-          opacity: 0.5;
+        @include respond(hover) {
+          &:hover {
+            opacity: 0.5;
+          }
         }
       }
     }

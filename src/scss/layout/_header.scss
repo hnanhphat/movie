@@ -25,6 +25,9 @@
     }
     .directory {
       display: flex;
+      @include respond(phone) {
+        display: none;
+      }
       li {
         &:not(:last-child) {
           margin-right: 18px;
@@ -129,11 +132,13 @@
             }
           }
 
-          &:hover {
-            input {
-              width: 258px;
-              opacity: 1;
-              padding-left: 32px;
+          @include respond(hover) {
+            &:hover {
+              input {
+                width: 258px;
+                opacity: 1;
+                padding-left: 32px;
+              }
             }
           }
         }
@@ -199,20 +204,24 @@
             width: 16px;
             margin-right: 15px;
           }
-          &:hover {
-            svg {
-              animation: spin 2s infinite; 
+          @include respond(hover) {
+            &:hover {
+              svg {
+                animation: spin 2s infinite; 
+              }
             }
           }
         }
 
-        &:hover {
-          &::before {
-            opacity: 1;
-            @include tranform_c(translate(-50%, 0));
-          }
-          .dropdown__list {
-            @include tranform_c(scale(1));
+        @include respond(hover) {
+          &:hover {
+            &::before {
+              opacity: 1;
+              @include tranform_c(translate(-50%, 0));
+            }
+            .dropdown__list {
+              @include tranform_c(scale(1));
+            }
           }
         }
       }
